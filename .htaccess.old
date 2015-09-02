@@ -1,0 +1,33 @@
+# Begin hotlink protection #
+RewriteEngine on
+RewriteCond %{HTTP_REFERER} !^http://lanechasteen.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.lanechasteen.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://chasteenportfolio.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.chasteenportfolio.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://chasteenportfoliocom.fatcow.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.chasteenportfoliocom.fatcow.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^https://lanechasteen.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.lanechasteen.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^https://chasteenportfolio.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.chasteenportfolio.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^https://chasteenportfoliocom.fatcow.com/.*$ [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.chasteenportfoliocom.fatcow.com/.*$ [NC]
+RewriteRule .(gif|jpg|png)$ - [F]
+# End hotlink protection #
+
+
+DirectoryIndex index.html index.php?page=home
+
+
+
+# BEGIN WordPress
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php [L]
+</IfModule>
+
+# END WordPress
