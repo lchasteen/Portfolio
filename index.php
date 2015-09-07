@@ -16,14 +16,13 @@
     	
 <!-- Bootstrap core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
+	<link href="assets/css/bootstrap.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-theme.css" rel="stylesheet">
+	<link href="assets/css/bootstrap-theme.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="assets/jumbotron/jumbotron.css" rel="stylesheet">
 
-    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
-    <!--[if lt IE 9]><script src="assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
-    <script src="assets/js/ie-emulation-modes-warning.js"></script>
-
+ 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -34,12 +33,14 @@
     <?php include ("pages/nav.php"); ?>
 	
     <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
+   
       <div class="container">
-	  <div class="col-md-2"><img src="./images/cappuccino-cup-canvas-steam-alpha.png" height="150" width="150" /></div>
-		<div class="col-md-6"><h2>Left Handed Coding & Cappuccinos</h2></div>    
+		<h1>Left Handed Coding & Cappuccinos</h1>
+		<img src="./images/cappuccino-cup-canvas-steam-alpha.png" height="150" width="150" />
+		      
       </div>
-    </div>
+	 
+    
 
     <div class="container">
 
@@ -66,26 +67,21 @@
 			}
 			include ("pages/footer.php");
 		?>
-		
-
+	
     </div> <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/bootstrap-transition.js"></script>
-    <script src="assets/js/bootstrap-alert.js"></script>
-    <script src="assets/js/bootstrap-modal.js"></script>
-    <script src="assets/js/bootstrap-dropdown.js"></script>
-    <script src="assets/js/bootstrap-scrollspy.js"></script>
-    <script src="assets/js/bootstrap-tab.js"></script>
-    <script src="assets/js/bootstrap-tooltip.js"></script>
-    <script src="assets/js/bootstrap-popover.js"></script>
-    <script src="assets/js/bootstrap-button.js"></script>
-    <script src="assets/js/bootstrap-collapse.js"></script>
-    <script src="assets/js/bootstrap-carousel.js"></script>
-    <script src="assets/js/bootstrap-typeahead.js"></script>
-	<script src="assets/js/page-modify.js"></script>
+    <script src="assets/jquery-2.1.4.min.js"></script>
+	<script src="assets/angular.min.js"></script>
+	<script src="assets/js/bootstrap.min.js"></script>	     
+	<script>
+var app = angular.module('myApp', []);
+app.controller('customersCtrl', function($scope, $http) {
+    $http.get("./data/home-data.php")
+    .success(function(response) {$scope.names = response.records;});
+});
+</script>
   </body>
 </html>
