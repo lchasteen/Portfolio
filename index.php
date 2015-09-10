@@ -40,7 +40,7 @@
 		      
       </div>
 	 
-    
+    <?php include ("php-scripts/Database.php"); ?>
 
     <div class="container">
 
