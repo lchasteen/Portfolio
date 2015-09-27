@@ -1,6 +1,6 @@
 <?php
 
-require_once "config/DatabaseConfig.php";
+require_once "config/PortfolioConfiguration.php";
 require_once "FileWriter.php";
 /**
 * Database connection object. Get data from portfolio database.
@@ -15,9 +15,9 @@ class Database
 	/**
 	* Constructor
 	*/
-	function __construct(){
+	function __construct(DatabaseConfiguration $db){
 				
-		$this->conf = new DatabaseConfig();
+		$this->conf = $db;
 		$this->conn = mysqli_connect($this->conf->getServerName(), $this->conf->getUserName(), $this->conf->getPassword(), $this->conf->getDatabaseName());
 		if ($this->conn->connect_error) {
 			die("Connection failed: " . $this->conn->connect_error);
@@ -84,7 +84,8 @@ class Database
 
 class DatabaseService{
 	public function run(){
-	 $dbase = new Database();
+	 $dbconn = new PortfolioConfiguration();
+	 $dbase = new Database($dbconn);
 	 $sjd = $dbase->getJSONDataFromQuery("SELECT  title, description FROM titledescription");
 	 $fwinstance = new FileWriter("./data/home-data.php");
 	 $fwinstance->writeToFile($sjd);
